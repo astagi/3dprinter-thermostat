@@ -18,7 +18,7 @@ class TestPsyduck(unittest.TestCase):
         heat_on_mock):
         get_temperature_mock.return_value = 20
         get_threshold_mock.return_value = 15
-        thermostat.check(12)
+        thermostat.check()
         heat_on_mock.assert_called_once()
 
     @patch('thermostat.heat_off')
@@ -28,5 +28,5 @@ class TestPsyduck(unittest.TestCase):
         heat_off_mock):
         get_temperature_mock.return_value = 15
         get_threshold_mock.return_value = 20
-        thermostat.check(12)
+        thermostat.check()
         heat_off_mock.assert_called_once()
