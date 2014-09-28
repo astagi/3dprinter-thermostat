@@ -6,7 +6,7 @@ sys.modules['ds18b20'] = Mock()
 sys.modules['RPi'] = Mock()
 import thermostat
 
-class TestPsyduck(unittest.TestCase):
+class TestThermostat(unittest.TestCase):
 
     def setUp(self):
         pass
