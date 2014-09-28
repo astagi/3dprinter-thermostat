@@ -12,6 +12,7 @@ def get_threshold():
     return 25.0
 
 def get_heat_pin():
+    # for now we hardcode the heat pin
     return 17
 
 def heat_on():
