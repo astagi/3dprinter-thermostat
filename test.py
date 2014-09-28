@@ -15,10 +15,10 @@ class TestPsyduck(unittest.TestCase):
         pass
 
     @patch('thermostat.get_heat_pin')
-    @patch('thermostat.heat_off')
-    @patch('thermostat.get_threshold')
     @patch('thermostat.get_temperature')
-    def test_thremostat_on(self, get_heat_pin, get_temperature_mock,
+    @patch('thermostat.get_threshold')
+    @patch('thermostat.heat_off')
+    def test_heat_off(self, get_heat_pin, get_temperature_mock,
         get_threshold_mock, heat_off_mock):
         get_temperature_mock.return_value = 20
         get_threshold_mock.return_value = 15
@@ -27,10 +27,10 @@ class TestPsyduck(unittest.TestCase):
         get_heat_pin.assert_called_once()
 
     @patch('thermostat.get_heat_pin')
-    @patch('thermostat.heat_on')
-    @patch('thermostat.get_threshold')
     @patch('thermostat.get_temperature')
-    def test_thremostat_off(self, get_heat_pin, get_temperature_mock,
+    @patch('thermostat.get_threshold')
+    @patch('thermostat.heat_on')
+    def test_heat_on(self, get_heat_pin, get_temperature_mock,
         get_threshold_mock, heat_on_mock):
         get_temperature_mock.return_value = 15
         get_threshold_mock.return_value = 20
