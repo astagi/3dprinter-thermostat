@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 from ds18b20 import DS18B20
+from RPi import GPIO
+import os
 
 def get_temperature():
     sensor = DS18B20()
@@ -10,17 +12,21 @@ def get_threshold():
     return 25.0
 
 def heat_on():
-    pass
+    GPIO.output(17,GPIO.LOW)
 
 def heat_off():
-    pass
+    GPIO.output(17,GPIO.HIGH)
 
 def check():
-    if get_temperature() > get_threshold():
+    if get_temperature() < get_threshold():
         heat_on()
     else:
         heat_off()
 
 if __name__ == '__main__':
+    os.system('sudo modprobe w1-gpio')
+    os.system('sudo modprobe w1-therm')
+    GPIO.setmode(GPIO.BCM)
+    GPIO.setup(17, GPIO.OUT)
     while True:
         check()
